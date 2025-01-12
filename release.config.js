@@ -119,11 +119,14 @@ addPlugin("@semantic-release/npm", {
   "tarballDir": "pack"
 });
 
-addPlugin("semantic-release-pypi", {
-  "pypiPublish": false,
-  "envDir": false,
-  "installDeps": false,
-});
+const pythonExists = existsSync("./pyproject.toml") || existsSync("./setup.py");
+if (pythonExists) {
+  addPlugin("semantic-release-pypi", {
+    "pypiPublish": false,
+    "envDir": false,
+    "installDeps": false,
+  });
+}
 
 const actionExists = existsSync("./action.yml");
 if (actionExists) {
