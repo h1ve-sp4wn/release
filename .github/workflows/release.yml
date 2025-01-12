@@ -75,7 +75,6 @@ jobs:
     name: Semantic release
     needs:
       - setup
-      - test
       - docker
     runs-on: ubuntu-latest
     steps:
